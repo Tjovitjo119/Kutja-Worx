@@ -4,17 +4,17 @@ import { sanityConfigured } from "@/sanity/env";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Service = { _id: string; title: string; description?: string; category: string; image?: any };
 
-// Local flyer crops used as placeholder photos until real ones are added in the CMS.
+// Local photos (public/photos/gallery) shown until real ones are added in the CMS.
+// The 5th entry also feeds the gallery header band, so keep a wide landscape shot there.
 export const placeholderGallery: SiteContent["gallery"] = [
-  ["Black coupe", "Workshop", "car-black"],
-  ["Engine build", "Engine Builds", "engine"],
-  ["Red hatch", "Workshop", "car-red"],
-  ["Suspension", "Suspension", "suspension"],
-  ["Clutch kit", "Engine Builds", "clutch"],
-  ["Diagnostics", "Diagnostics", "diagnostics"],
-  ["White coupe", "Workshop", "car-white"],
-  ["On the lift", "Suspension", "lift"],
-].map(([caption, category, f], i) => ({ _id: "p" + i, caption, category, image: null, src: "/art/" + f + ".svg" }));
+  ["BMW E30 325i", "Workshop", "bmw-e30-325i-sunset"],
+  ["BMW E30 M3", "Workshop", "e30-m3-red-forest"],
+  ["VW Golf GTI", "Workshop", "golf-gti-red-night"],
+  ["BMW E36", "Workshop", "bmw-e36-sunset"],
+  ["BMW E36 Group A build", "Engine Builds", "bmw-e36-grc-group-a"],
+  ["E36 & E34 on air", "Suspension", "e36-e34-meet"],
+  ["VW Polo", "Workshop", "vw-polo-sunset"],
+].map(([caption, category, f], i) => ({ _id: "p" + i, caption, category, image: null, src: "/photos/gallery/" + f + ".webp" }));
 export type SiteContent = {
   settings: {
     businessName: string;

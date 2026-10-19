@@ -14,6 +14,7 @@ export default function Photo({
   priority,
   className = "object-cover",
   label = "Photo placeholder",
+  sizes = "(min-width:1024px) 50vw, 100vw",
 }: {
   image?: any;
   fallback?: string;
@@ -22,6 +23,7 @@ export default function Photo({
   priority?: boolean;
   className?: string;
   label?: string;
+  sizes?: string;
 }) {
   const src = image ? urlFor(image).width(width).quality(80).url() : fallback;
   if (!src) {
@@ -31,5 +33,5 @@ export default function Photo({
       </div>
     );
   }
-  return <Image src={src} alt={alt} fill priority={priority} unoptimized={!!image || src.endsWith(".svg")} sizes="(min-width:1024px) 50vw, 100vw" className={className} />;
+  return <Image src={src} alt={alt} fill priority={priority} unoptimized={!!image || src.endsWith(".svg")} sizes={sizes} className={className} />;
 }

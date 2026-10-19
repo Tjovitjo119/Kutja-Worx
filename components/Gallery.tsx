@@ -68,7 +68,7 @@ export default function Gallery({ items }: { items: SiteContent["gallery"] }) {
                 className={`group relative overflow-hidden border border-brand-red/70 bg-ink-panel aspect-[4/3]`}
               >
                 <motion.div className="absolute inset-0" whileHover={{ scale: 1.06 }} transition={{ duration: 0.5 }}>
-                  <Photo image={g.image} fallback={g.src} alt={g.caption || "Kutja Worx workshop"} width={900} label="Your photo here" className="object-cover" />
+                  <Photo image={g.image} fallback={g.src} alt={g.caption || "Kutja Worx workshop"} width={900} sizes="(min-width:1024px) 25vw, 50vw" label="Your photo here" className="object-cover" />
                 </motion.div>
                 {g.caption && (
                   <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 text-[10px] font-semibold uppercase tracking-wider">
