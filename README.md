@@ -159,7 +159,7 @@ The brief said to choose what best matches the mockups and record it here.
 ## 11. Project structure
 
 ```
-app/(site)/        public pages (home, services, cars, parts, price-list, gallery, about, contact)
+app/(site)/        public pages (home, services, parts, price-list, gallery, about, contact)
 app/admin/         login + dashboard (route group (panel) holds the authenticated screens)
 app/api/           contact, vehicle-enquire, parts-quote, revalidate, auth, art, admin/*
 components/site/   Header, Footer, sections, browsers (filtering UIs), cart

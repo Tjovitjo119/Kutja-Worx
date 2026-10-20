@@ -28,7 +28,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <PageHero white="About" red="Us" sub={`Meet the team behind ${s.name}.`} art="/api/art/workshop" />
+      <PageHero white="About" red="Us" sub={`Meet the team behind ${s.name}.`} photo="/cars/bmw-e36.webp" />
       <section className="bg-ink py-14">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading white="Built for" red="Performance" eyebrow="Our story" />

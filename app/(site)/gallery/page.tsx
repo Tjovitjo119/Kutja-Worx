@@ -21,7 +21,7 @@ export default async function GalleryPage() {
         white="Our"
         red="Gallery"
         sub="Real work. Real results. A look at some of our latest builds, repairs and projects."
-        art="/api/art/lift"
+        photo="/cars/bmw-stance-pair.jpg"
       />
       <GalleryBrowser items={items} />
     </>

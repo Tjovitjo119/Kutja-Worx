@@ -18,7 +18,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: { t
         white="Services &"
         red="Price List"
         sub="Professional service, competitive pricing. Keep your car running at its best."
-        art="/api/art/engine"
+        photo="/cars/bmw-e36-group-a.webp"
       />
       <ServicesBrowser
         services={services}

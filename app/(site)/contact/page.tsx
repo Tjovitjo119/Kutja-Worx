@@ -28,7 +28,7 @@ export default async function ContactPage({ searchParams }: { searchParams: { se
         white="Get in"
         red="Touch"
         sub="Have a question or need a quote? We're here to help. Contact us for quotes, bookings or any enquiries."
-        art="/api/art/lift"
+        photo="/cars/bmw-e30-325i.webp"
       />
       <section className="bg-ink py-10">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-2">

@@ -7,6 +7,11 @@ html {
   scroll-padding-top: 5rem;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   @apply bg-ink font-sans text-white antialiased;
 }

@@ -4,12 +4,28 @@ import type { PriceListItem } from "@/lib/types";
 export const th = "px-4 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted";
 export const td = "px-4 py-2.5 text-sm";
 
-export function PriceTable({ title, rows }: { title: string; rows: { name: string; description?: string; price: string }[] }) {
+type Row = { name: string; description?: string; price: string };
+
+/** Stacked cards on phones (no sideways scrolling), a normal table from sm up. */
+export function PriceTable({ title, rows }: { title: string; rows: Row[] }) {
   return (
     <section className="mb-8">
-      <h3 className="mb-2 font-display text-lg font-bold uppercase text-brand-red">{title}</h3>
-      <div className="overflow-x-auto rounded-lg border border-ink-line2">
-        <table className="w-full min-w-[480px] text-left">
+      <h3 className="mb-3 font-display text-lg font-bold uppercase text-brand-red">{title}</h3>
+
+      <ul className="space-y-2 sm:hidden">
+        {rows.map((r, i) => (
+          <li key={i} className="flex items-start justify-between gap-4 rounded-xl border border-ink-line2 bg-ink-panel p-4">
+            <div className="min-w-0">
+              <p className="break-words font-semibold leading-snug">{r.name}</p>
+              {r.description && <p className="mt-0.5 break-words text-sm text-muted">{r.description}</p>}
+            </div>
+            <p className="shrink-0 text-right font-display text-lg font-bold text-brand-red">{r.price}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div className="hidden overflow-hidden rounded-lg border border-ink-line2 sm:block">
+        <table className="w-full text-left">
           <thead className="bg-black/40">
             <tr>
               <th className={th}>Service</th>

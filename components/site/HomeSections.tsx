@@ -4,9 +4,10 @@ import DiagonalPanel from "@/components/DiagonalPanel";
 import { GearIcon } from "@/components/Logo";
 import { Icon } from "@/components/ui/Icon";
 import { LinkButton, Photo, SectionHeading, StripeBackground } from "@/components/ui/primitives";
-import VehicleCard, { type VehicleWithImg } from "./VehicleCard";
 import { formatZAR, telHref } from "@/lib/utils";
-import type { HeroContent, Service, SiteSettings, Special, Testimonial } from "@/lib/types";
+import type { HeroContent, Service, SiteSettings, Special, Testimonial, Vehicle } from "@/lib/types";
+
+type VehicleWithImg = Vehicle & { _img: string };
 import { imageForSource } from "@/lib/image-source";
 
 export function HomeHero({ hero, settings }: { hero: HeroContent; settings: SiteSettings }) {
@@ -16,18 +17,19 @@ export function HomeHero({ hero, settings }: { hero: HeroContent; settings: Site
     <section className="relative isolate overflow-hidden bg-ink">
       <StripeBackground className="opacity-60" />
       <div className="relative md:min-h-[31rem]">
-        <DiagonalPanel side="left" cut="16%" className="relative h-60 md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[68%]">
-          <Photo src={bg} priority sizes="70vw" className="object-right" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-transparent" />
+        {/* Phones: the photo fills the whole hero with the text laid over it. Desktop: photo on the right with a diagonal cut. */}
+        <DiagonalPanel side="left" cut="16%" className="absolute inset-0 md:left-auto md:w-[68%]">
+          <Photo src={bg} priority sizes="(min-width:768px) 70vw, 100vw" className="object-cover object-[68%_center] md:object-right" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/10 md:bg-gradient-to-r md:from-ink md:via-ink/40 md:to-transparent" />
           <GearIcon className="absolute right-10 top-10 hidden h-52 w-52 text-white/[0.07] md:block" />
         </DiagonalPanel>
-        <div className="relative mx-auto max-w-7xl px-4 py-10 md:py-20">
-          <h1 className="max-w-xl font-display text-5xl font-bold uppercase italic leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+        <div className="relative mx-auto flex min-h-[36rem] max-w-7xl flex-col justify-end px-4 pb-10 pt-28 md:block md:min-h-0 md:py-20">
+          <h1 className="max-w-xl font-display text-5xl font-bold uppercase italic leading-[0.95] tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-6xl lg:text-7xl">
             <span className="block">{hero.headline}</span>
             <span className="block text-brand-red">{hero.headlineAccent}</span>
           </h1>
           {!!hero.brands?.length && <p className="mt-5 text-sm font-medium text-white">{hero.brands.join(" • ")}</p>}
-          {hero.subhead && <p className="mt-3 max-w-md text-sm leading-relaxed text-white/80">{hero.subhead}</p>}
+          {hero.subhead && <p className="mt-3 max-w-md text-sm leading-relaxed text-white/85">{hero.subhead}</p>}
           <div className="mt-7 flex flex-wrap gap-3">
             <LinkButton href={primaryHref}>
               <Phone className="h-4 w-4" />
@@ -76,20 +78,28 @@ export function FeatureStrip() {
 
 export function FeaturedBuilds({ vehicles }: { vehicles: VehicleWithImg[] }) {
   return (
-    <section className="bg-ink py-14">
+    <section className="bg-ink py-12 sm:py-14">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="flex items-end justify-between gap-4">
-          <SectionHeading white="Cars We" red="Work On" />
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <SectionHeading white="Cars We" red="Work On" sub="Servicing, repairs and builds on all makes and models." />
           <Link
-            href="/cars"
+            href="/gallery"
             className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-brand-red hover:underline"
           >
-            View all car types <ArrowRight className="h-4 w-4" />
+            See our gallery <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
           {vehicles.slice(0, 6).map((v) => (
-            <VehicleCard key={v._id} v={v} />
+            <article key={v._id} className="overflow-hidden rounded-2xl border border-ink-line2 bg-ink-panel">
+              <div className="relative aspect-[4/3]">
+                <Photo src={v._img} alt={v.title} sizes="(min-width:1024px) 16vw, (min-width:768px) 30vw, 50vw" />
+              </div>
+              <div className="p-3">
+                <h3 className="break-words font-display text-base font-bold uppercase leading-tight">{v.title}</h3>
+                {v.tagline && <p className="mt-0.5 text-xs text-muted">{v.tagline}</p>}
+              </div>
+            </article>
           ))}
         </div>
       </div>

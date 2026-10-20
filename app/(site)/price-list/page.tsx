@@ -10,7 +10,7 @@ export default async function PriceListPage() {
   const [prices, parts] = await Promise.all([getPriceList(), getParts()]);
   return (
     <>
-      <PageHero white="Price" red="List" sub="Transparent pricing for all our services and parts." art="/api/art/ecu" />
+      <PageHero white="Price" red="List" sub="Transparent pricing for all our services and parts." photo="/cars/vw-polo.webp" />
       <PriceListBrowser prices={prices} parts={parts} />
     </>
   );
