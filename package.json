@@ -6,28 +6,50 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "seed": "node --env-file=.env.local --import tsx scripts/seed.ts",
+    "create-owner": "node --env-file=.env.local --import tsx scripts/create-owner.ts",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/oswald": "^5.3.0",
+    "@hookform/resolvers": "^5.9.1",
+    "@sanity/client": "^7.27.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.62.0",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
     "framer-motion": "^14.1.0",
+    "lucide-react": "^1.58.0",
     "next": "14.2.15",
+    "next-auth": "^4.24.15",
     "next-sanity": "^9.8.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.90.0",
     "sanity": "^3.62.0",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "tailwind-merge": "^3.7.0",
+    "yet-another-react-lightbox": "^3.32.2",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.15",
     "postcss": "^8.4.47",
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "puppeteer-core": "^25.14.0",
     "tailwindcss": "^3.4.14",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
- * Photo/colour panel with a slanted edge (md and up; straight edge on phones).
- * side="left"  -> the LEFT edge is cut (use for panels sitting on the right)
- * side="right" -> the RIGHT edge is cut (use for panels sitting on the left)
+ * Photo/colour panel with a slanted edge on md+ screens (straight edge on phones).
+ * side="left"  -> the LEFT edge is cut (panel sits on the right of its section)
+ * side="right" -> the RIGHT edge is cut (panel sits on the left)
  * `cut` is the horizontal size of the slant, e.g. "14%" or "120px".
  */
 export default function DiagonalPanel({
@@ -18,10 +18,7 @@ export default function DiagonalPanel({
   children?: ReactNode;
 }) {
   return (
-    <div
-      className={`diag ${side === "left" ? "diag-left" : "diag-right"} ${className}`}
-      style={{ ["--cut" as string]: cut }}
-    >
+    <div className={`${side === "left" ? "diag-left" : "diag-right"} ${className}`} style={{ "--cut": cut } as CSSProperties}>
       {children}
     </div>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityConfigured } from "@/sanity/env";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export function GearIcon({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
@@ -11,10 +11,8 @@ export function GearIcon({ className = "h-8 w-8" }: { className?: string }) {
 }
 
 export default function Logo({ name, logo }: { name: string; logo?: any }) {
-  if (logo) {
-    return (
-      <Image src={urlFor(logo).height(96).url()} alt={name} width={160} height={48} className="h-11 w-auto" unoptimized />
-    );
+  if (logo?.asset && sanityConfigured) {
+    return <Image src={urlFor(logo).height(96).url()} alt={name} width={160} height={48} className="h-11 w-auto" unoptimized />;
   }
   const [first, ...rest] = name.split(" ");
   return (

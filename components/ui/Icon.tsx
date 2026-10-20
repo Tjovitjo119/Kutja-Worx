@@ -1,0 +1,65 @@
+import {
+  Activity,
+  ArrowDownUp,
+  BatteryCharging,
+  Car,
+  CircleDot,
+  Cog,
+  Cpu,
+  Disc,
+  Droplets,
+  Flame,
+  Fuel,
+  Gauge,
+  Gem,
+  Hammer,
+  KeyRound,
+  Laptop,
+  ListChecks,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  Thermometer,
+  Timer,
+  Truck,
+  Wind,
+  Wrench,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+
+const map: Record<string, LucideIcon> = {
+  wrench: Wrench,
+  cog: Cog,
+  settings: Settings,
+  gauge: Gauge,
+  disc: Disc,
+  laptop: Laptop,
+  cpu: Cpu,
+  zap: Zap,
+  car: Car,
+  fuel: Fuel,
+  "battery-charging": BatteryCharging,
+  thermometer: Thermometer,
+  "arrow-down-up": ArrowDownUp,
+  "shield-check": ShieldCheck,
+  hammer: Hammer,
+  activity: Activity,
+  "circle-dot": CircleDot,
+  gem: Gem,
+  flame: Flame,
+  "key-round": KeyRound,
+  timer: Timer,
+  wind: Wind,
+  droplets: Droplets,
+  sparkles: Sparkles,
+  "list-checks": ListChecks,
+  truck: Truck,
+};
+
+export function Icon({ name, className }: { name?: string; className?: string }) {
+  const C = (name && map[name]) || Wrench;
+  return <C className={className} aria-hidden />;
+}
+
+export { map as iconMap };

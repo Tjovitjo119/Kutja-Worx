@@ -1,7 +1,22 @@
 import siteSettings from "./siteSettings";
 import heroContent from "./heroContent";
-import service from "./service";
-import galleryImage from "./galleryImage";
-import specialOrPromo from "./specialOrPromo";
+import { serviceCategory, partCategory, vehicleCategory } from "./categories";
+import { service, priceListItem, vehicle, part } from "./catalog";
+import { galleryImage, special, testimonial, inquiry, user } from "./content";
 
-export const schemaTypes = [siteSettings, heroContent, service, galleryImage, specialOrPromo];
+export const schemaTypes = [
+  siteSettings,
+  heroContent,
+  service,
+  serviceCategory,
+  priceListItem,
+  vehicle,
+  vehicleCategory,
+  part,
+  partCategory,
+  galleryImage,
+  special,
+  testimonial,
+  inquiry,
+  user,
+];

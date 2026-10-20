@@ -1,42 +1,37 @@
 import { defineField, defineType } from "sanity";
+import { img, num, str, text } from "./_helpers";
 
 export default defineType({
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
   fields: [
-    defineField({ name: "businessName", title: "Business name", type: "string", initialValue: "Kutja Worx" }),
-    defineField({ name: "logo", title: "Logo", type: "image", options: { hotspot: true } }),
+    defineField({ name: "name", title: "Business name", type: "string", initialValue: "Kutja Worx" }),
+    str("tagline", "Tagline"),
+    img("logo", "Logo"),
     defineField({
-      name: "phoneNumbers",
+      name: "phones",
       title: "Phone numbers",
       type: "array",
       of: [{ type: "string" }],
-      description: "The first number is used for the Call Now button.",
+      description: "The first number is used for Call Now buttons.",
     }),
-    defineField({ name: "email", title: "Email (shown on site, optional)", type: "string" }),
-    defineField({ name: "about", title: "About us text", type: "text", rows: 5 }),
-    defineField({ name: "address", title: "Address", type: "string" }),
-    defineField({ name: "hours", title: "Opening hours (optional)", type: "text", rows: 3 }),
+    str("email", "Email"),
+    str("address", "Address"),
+    defineField({ name: "mapEmbedUrl", title: "Google Maps embed URL (optional)", type: "url" }),
+    defineField({ name: "openingHours", title: "Opening hours (one line each)", type: "array", of: [{ type: "string" }] }),
+    text("about", 5, "About us text"),
     defineField({
-      name: "socialLinks",
+      name: "socials",
       title: "Social links",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "platform",
-              title: "Platform",
-              type: "string",
-              options: { list: ["Facebook", "Instagram", "TikTok", "WhatsApp", "X / Twitter", "YouTube"] },
-            },
-            { name: "url", title: "URL", type: "url" },
-          ],
-          preview: { select: { title: "platform", subtitle: "url" } },
-        },
-      ],
+      type: "object",
+      fields: ["facebook", "instagram", "whatsapp", "youtube"].map((n) => defineField({ name: n, title: n, type: "url" })),
+    }),
+    defineField({
+      name: "stats",
+      title: "Business statistics (shown on About page when above 0)",
+      type: "object",
+      fields: [num("yearsInBusiness", "Years in business"), num("carsServiced", "Cars serviced"), num("happyCustomers", "Happy customers")],
     }),
   ],
   preview: { prepare: () => ({ title: "Site Settings" }) },

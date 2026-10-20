@@ -1,13 +1,20 @@
 import { defineField, defineType } from "sanity";
+import { img, str, text } from "./_helpers";
+
+const cta = (name: string, title: string) => defineField({ name, title, type: "object", fields: [str("label"), str("href")] });
 
 export default defineType({
   name: "heroContent",
-  title: "Hero (top banner)",
+  title: "Hero (home banner)",
   type: "document",
   fields: [
-    defineField({ name: "headline", title: "Headline", type: "string" }),
-    defineField({ name: "subheadline", title: "Sub-headline", type: "string" }),
-    defineField({ name: "backgroundImage", title: "Background image", type: "image", options: { hotspot: true } }),
+    str("headline", "Headline (white)"),
+    str("headlineAccent", "Headline accent (red)"),
+    text("subhead", 2, "Sub-headline"),
+    defineField({ name: "brands", title: "Brands strip", type: "array", of: [{ type: "string" }] }),
+    img("backgroundImage", "Background image"),
+    cta("ctaPrimary", "Primary button"),
+    cta("ctaSecondary", "Secondary button"),
   ],
-  preview: { prepare: () => ({ title: "Hero (top banner)" }) },
+  preview: { prepare: () => ({ title: "Hero (home banner)" }) },
 });
