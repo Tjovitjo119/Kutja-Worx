@@ -23,7 +23,7 @@ export function HomeHero({ hero, settings }: { hero: HeroContent; settings: Site
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/10 md:bg-gradient-to-r md:from-ink md:via-ink/40 md:to-transparent" />
           <GearIcon className="absolute right-10 top-10 hidden h-52 w-52 text-white/[0.07] md:block" />
         </DiagonalPanel>
-        <div className="relative mx-auto flex min-h-[36rem] max-w-7xl flex-col justify-end px-4 pb-10 pt-28 md:block md:min-h-0 md:py-20">
+        <div className="relative mx-auto flex min-h-[38rem] max-w-7xl flex-col justify-end px-4 pb-24 pt-28 md:block md:min-h-0 md:py-20">
           <h1 className="max-w-xl font-display text-5xl font-bold uppercase italic leading-[0.95] tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-6xl lg:text-7xl">
             <span className="block">{hero.headline}</span>
             <span className="block text-brand-red">{hero.headlineAccent}</span>
